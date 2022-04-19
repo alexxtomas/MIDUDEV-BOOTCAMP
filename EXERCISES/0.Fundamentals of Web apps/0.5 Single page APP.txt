@@ -1,0 +1,3 @@
+Borwser -> server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_notes_spa
+
+server -> browser: JavaScript makes changes to the HTML with the request without refreshing the  page
