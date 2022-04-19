@@ -1,0 +1,20 @@
+Es un dialecto del lenguaje ECMAScritp.
+Es un lenguaje multiparadigma, puedes programar con multiples paradigmas.
+
+Tipado debil, osea puedes a una variable que tiene una cadena de texto reasignarle mas adelante un numero.
+Tipado dinamico, no tienes que decirle de que tipo va a ser una variable a la hora de declarara.
+
+Tiene estos tipos de datos PRIMITIVOS:
+-'string'
+- true false
+- undefined
+- null
+- BigIng
+- Synbol
+
+Los Datos Primitivos Son INMUTABLES 
+Los Objetos No Son DATOS PRIMITIVOS Y SI SON MUTABLES
+
+LO QUE SIGNIFICA QUE SEAN INMUTABLES ES QUE TU NUNCA VAS A PODER CAMBIAR EL VALOR DE ESA VARIABLE CON ESE DATO PRIMITIVO 
+LOS METODOS LO QUE HARAN ES DEVOLVER EL DATO CAMBIADO PARA QUE LO PUEDAS ASIGNAR A OTRA VARIABLE PERO NUNCA CAMBIAR
+EL DATO PRIMITIVO DENTRO DE LA VARIABLE.

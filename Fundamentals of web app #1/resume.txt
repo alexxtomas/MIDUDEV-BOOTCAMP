@@ -1,0 +1,14 @@
+Server and Browser communicate with each other using the HTTP protocol.
+
+Tab Network in the Developer Console shows how the browser and the server communicate.
+
+DOM or Document Object Model is an application programming interface (API) that allows you to modify from JavaScript the trees of elements corresponding to web pages.
+
+HTTP GET is a type of HTTP request that only shows the data, but does not allow to modify anything.
+
+HTTP POST can modify data.
+
+In the traditional web pages all of the logic is on the server, and the browser only renders the HTML as instructed.
+Now the web pages use Single-page-application (SPA).
+This means that if there is to be any change in the page with new data, it is not necessary that the server returns all the elements of the web page again. The server only returns us the data that changes and on the client side it is automatically applied to the web page that the user sees.
+

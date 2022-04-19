@@ -1,0 +1,4 @@
+1.Install NodeJS
+2.Create React App with -> npx create-react-app [name]
+3.Enter the folder and run npm start.
+
