@@ -1,0 +1,13 @@
+body {
+    padding: 10px;
+}
+
+.left-right {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.right {
+    margin-left: 50px;
+}
