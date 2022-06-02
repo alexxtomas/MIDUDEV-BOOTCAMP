@@ -2,7 +2,7 @@ POST http://localhost:3001/api/notes
 Content-Type: application/json
 
 {
-    "content": "This is aanew note"
+    "content": "Daniela es muy lista lo esta entendiendo todo"
     
 }
 

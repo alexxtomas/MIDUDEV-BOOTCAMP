@@ -4,7 +4,8 @@ const Content = ({setCountries, countries}) => {
     const [weather, setWeather] = useState([])
     useEffect(() => {
         const api_key = process.env.REACT_APP_API_KEY
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=-17.53&lon=-149.56&units=metric&appid=${api_key}`)
+        fetch('https://api.openweathermap.org/data/2.5/onecall?lat=-17.53&lon=-149.56&units=metric&appid=845a8c38e0b3868aaf346406e1360846')
+        
             .then(res => res.json())
             .then(json => setWeather(json))
     }, [])
@@ -19,7 +20,6 @@ const Content = ({setCountries, countries}) => {
         )
     }
     else if (countries.length === 1) {
-        console.log(weather)
         const img = `http://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png`
         return (
             <div>
