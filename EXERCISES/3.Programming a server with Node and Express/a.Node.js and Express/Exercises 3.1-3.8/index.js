@@ -1,13 +1,17 @@
 const express = require('express')
+const morgan = require('morgan')
 
 const app = express()
 
-
 app.use(express.json())
+morgan.token('body', req => {
+    return JSON.stringify(req.body)
+})
 
 
+// app.use(morgan(':method :url :status :response-time ms :req'))
 
-let persons = [
+let phonebook = [
     { 
       "id": 1,
       "name": "Arto Hellas", 
@@ -30,68 +34,64 @@ let persons = [
     }
 ]
 
-app.get('/api/persons',(resquest, response) => {
-    response.json(persons)
+
+app.get('/api/persons', (req, res) => {
+    res.json(phonebook)
 })
 
-app.get('/api/info', (request, response) => {
-    const toSend = `
-    <div>
-        <p>Phonebook has info for ${persons.length}</p>
-        <p>${new Date().toUTCString()}</p>
-    </div>`
-    response.send(toSend)
+app.get('/info', (req, res) => {
+    const entries = phonebook.length
+    const timeNow = new Date().toUTCString()
+    const html = `
+        <div>
+            <p>PhoneBook has info for ${entries} people</p>
+            <p>${timeNow}</p>
+        </div>
+    `
+    res.send(html)
 })
 
-app.get('/api/persons/:id', (request, response) => {
-    const id = Number(request.params.id)
-    const toShow = persons.filter(person => person.id === id)
-    if(toShow.length === 0) {
-        response.status(404)
-        response.end()
-    } else response.json(toShow)
-})
-
-app.delete('/api/persons/:id', (request,response) => {
-    const id = Number(request.params.id)
-    persons = persons.filter(person => person.id !== id)
-    response.status(204).end()
-})
-
-app.use(express.json)
-
-app.post('/api/persons', (request, response) => {
-  request.setTimeout(200)
-  const person = request.body
-  if (!person.name || !person.number) {
-    response.status(400).json({
-      error: 'person.name or person.number is missing'
-    }).end()
-  } else if (persons.some(p => p.name === person.name)) {
-    response.status(400).json({
-      error: "error name must be unique"
-    })
-  } else if (persons.some(p => p.number === person.number)) {
-    response.status(400).json({
-      error: 'error number must be unique'
-    })
-  } else {
-    const ids = persons.map(person => person.id)
-    const maxId = Math.max(...ids)
-  
-    const newPerson = {
-      id: maxId + 1,
-      name: person.name,
-      number: person.number,
+app.get('/api/persons/:id', (req, res) => {
+    const id =  Number(req.params.id)
+    const personToShow = phonebook.find(person => person.id === id)
+    if(personToShow) res.json(personToShow)
+    else {
+        res.status(404).json({error: `Person with id ${id} does not exist`}).end()
     }
-    persons = [...persons, newPerson]
-    response.status(201).json(newPerson)
-  }
-  
 })
+
+app.delete('/api/persons/:id', (req, res) => {
+    const id = Number(req.params.id)
+    const newPhoneBook = phonebook.filter(person => person.id !== id)
+    if(newPhoneBook.length === phonebook.length) {
+        res.status(404).json({error: `Perosn with id ${id} does not exist`}).end()
+    } else {
+        phonebook = newPhoneBook
+        res.status(200).json(`Person with id ${id} was deleted sucessfully`)
+    }
+})
+
+app.post('/api/persons',morgan(':method :url :status :res[content-length] - :response-time ms :body') ,(req, res) => {
+    const requestBody = req.body
+    const notDuplicateNames = phonebook.find(person => person.name === requestBody.name)
+    if (requestBody.name === undefined && requestBody.number === undefined) res.status(400).json({error: 'name or number is missing'}).end()
+    else if (notDuplicateNames !== undefined) res.status(400).json({error: `name ${notDuplicateNames.name} alredy exists`})
+    else {
+        const ids = phonebook.map(person => person.id)
+        const personToAdd = {
+            id: Math.max(...ids) + 1,
+            name: requestBody.name,
+            number: requestBody.number
+        }
+        phonebook = phonebook.concat(personToAdd)
+        res.status(201).json(personToAdd)
+
+    }
+})
+
 
 
 const PORT = 3001
-app.listen(PORT, ()=> {
+app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
-}) 
+})
