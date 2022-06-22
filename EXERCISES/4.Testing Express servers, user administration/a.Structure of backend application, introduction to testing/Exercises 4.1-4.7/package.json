@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "start": "cross-env NODE_ENV=production node index.js",
-    "test": "cross-env NODE_ENV=test jest --verbose  --forceExit ",
+    "test": "cross-env NODE_ENV=test jest --verbose  --runInBand --forceExit ./tests/blogs-api.test.js",
     "test:watch": "npm run test -- --watch"
   },
   "author": "",
@@ -14,7 +14,8 @@
   "devDependencies": {
     "jest": "^28.1.1",
     "nodemon": "2.0.16",
-    "standard": "17.0.0"
+    "standard": "17.0.0",
+    "supertest": "6.2.3"
   },
   "eslintConfig": {
     "extends": "./node_modules/standard/eslintrc.json",
@@ -27,6 +28,7 @@
     "cross-env": "^7.0.3",
     "dotenv": "16.0.1",
     "express": "4.18.1",
+    "express-async-errors": "^3.1.1",
     "lodash": "4.17.21",
     "mongoose": "6.4.0"
   },

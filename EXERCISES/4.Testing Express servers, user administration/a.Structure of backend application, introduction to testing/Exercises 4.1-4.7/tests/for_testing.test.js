@@ -1,13 +1,13 @@
 const { dummy, totalLikes, favoriteBlog, mostBlogs, mostLikes } = require('../utils/for_testing')
 // const lodash = require('lodash')
-test('dummy returns one', () => {
+test.skip('dummy returns one', () => {
   const blogs = []
 
   const result = dummy(blogs)
   expect(result).toBe(1)
 })
 
-describe('total likes', () => {
+describe.skip('total likes', () => {
   test('of empty list is zero', () => {
     const emptyBlogs = []
     const likes = totalLikes(emptyBlogs)
@@ -88,7 +88,7 @@ describe('total likes', () => {
   })
 })
 
-describe('favorite blog', () => {
+describe.skip('favorite blog', () => {
   test('the favorite blog is the one with the most likes', () => {
     const blogs = [
       {
@@ -147,7 +147,7 @@ describe('favorite blog', () => {
   })
 })
 
-describe('author with more blogs', () => {
+describe.skip('author with more blogs', () => {
   test('the author withe the more blogs is the one with the most blogs', () => {
     const blogs = [
       {
@@ -205,7 +205,7 @@ describe('author with more blogs', () => {
   })
 })
 
-describe('author with more likes', () => {
+describe.skip('author with more likes', () => {
   test('the author with more likes is the one with the most likes', () => {
     const blogs = [
       {
