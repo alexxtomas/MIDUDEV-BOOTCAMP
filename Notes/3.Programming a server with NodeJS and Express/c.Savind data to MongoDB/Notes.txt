@@ -1,0 +1,15 @@
+For more details see: https://www.youtube.com/watch?v=HsYA3QvWGlk&list=PLV8x_i1fqBw0Kn_fBIZTa3wS_VZAqddX7&index=12
+
+Create cluster in cloud.mongodb.com
+Install Studio 3T
+------------------------------------------------------------------------------------------------------------------------
+For more details see: https://www.youtube.com/watch?v=vhUw7GkRHdk&list=PLV8x_i1fqBw0Kn_fBIZTa3wS_VZAqddX7&index=9
+
+Mongoose es una alternativa a mongodb driver, crea validacion, logica para evitar problemas, te permite tener esquemas en tu aplicación 
+Instalar mongoose en el proyecto -> npm install mongoose 
+Practica y explicacion en notes-api-backend/ en github o notes-back-end/ en local
+
+Para que funcionen los archivos .env osea variables de entorno se debe installar dotenv -> npm install dotenv
+Importante añadir el .env al .gitignore para que no lo suba a github
+
+Sentry para capturar errores

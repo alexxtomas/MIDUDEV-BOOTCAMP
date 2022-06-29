@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs')
 
 loginRouter.post('/', async (req, res) => {
     const {username, password} = req.body
+    console.log(req.body)
 
     const user = await User.findOne({username})
 
