@@ -4,53 +4,64 @@ const Blog = require('../models/Blog')
 const User = require('../models/User')
 
 blogsRouter.get('/', async (req, res) => {
-    console.log(req)
-    const blogs = await Blog.find({}).populate('user', {username: 1, name: 1})
-    res.json(blogs)
-  })
+  console.log(req)
+  const blogs = await Blog.find({}).populate('user', { username: 1, name: 1 })
+  res.json(blogs)
+})
 
 blogsRouter.get('/:id', async (req, res) => {
-const { id } = req.params
-const blog = await Blog.findById(id).populate('user', {username: 1, name: 1})
+  const { id } = req.params
+  const blog = await Blog.findById(id).populate('user', {
+    username: 1,
+    name: 1
+  })
 
-res.json(blog)
+  res.json(blog)
 })
 
+blogsRouter.delete('/:id', userExtractor, async (req, res) => {
+  const { id } = req.params
 
-
-blogsRouter.delete('/:id', userExtractor,async (req, res) => {
-const { id } = req.params
-
-const blog = await Blog.findById(id)
-if(req.userId.toString() === blog.user.toString()) {
-  await Blog.findByIdAndRemove(id)
-  res.status(204).end()
-}
-res.status(401).json({error: 'You cannot delete a blog that it does not belong to you'})
-
-
+  const blog = await Blog.findById(id)
+  if (req.userId.toString() === blog.user.toString()) {
+    await Blog.findByIdAndRemove(id)
+    res.status(204).end()
+  }
+  res
+    .status(401)
+    .json({ error: 'You cannot delete a blog that it does not belong to you' })
 })
 
-blogsRouter.put('/:id', async (req, res) => {
-const { id } = req.params
-const blog = req.body
+blogsRouter.put('/:id', userExtractor, async (req, res) => {
+  const { id } = req.params
+  const blog = req.body
+  const { userId } = req
 
-if (!blog.title || !blog.author || !blog.url || !blog.likes) res.status(400).json({ error: 'title, author, url or likes is requeried to modify blog' })
-const newBlogInfo = {
+  if (!blog.title || !blog.author || !blog.url || !blog.likes)
+    res.status(400).json({
+      error: 'title, author, url or likes is requeried to modify blog'
+    })
+  const user = await User.findById(userId)
+  const newBlogInfo = {
     title: blog.title,
     author: blog.author,
     url: blog.url,
+    user: user._id,
     likes: blog.likes
-}
+  }
 
-const response = await Blog.findByIdAndUpdate(id, newBlogInfo, { new: true })
-res.status(202).json(response)
+  const modifiedBlog = await Blog.findByIdAndUpdate(id, newBlogInfo, {
+    new: true
+  })
+  user.blogs = user.blogs.concat(modifiedBlog._id)
+  await user.save()
+  res.status(202).json(modifiedBlog)
 })
 
-blogsRouter.post('/',userExtractor, async (req, res) => {
-  const {url, title, author, likes } = req.body
+blogsRouter.post('/', userExtractor, async (req, res) => {
+  const { url, title, author, likes } = req.body
 
-  const {userId} = req
+  const { userId } = req
   const user = await User.findById(userId)
 
   const blog = new Blog({
@@ -67,7 +78,6 @@ blogsRouter.post('/',userExtractor, async (req, res) => {
   await user.save()
 
   res.status(201).json(savedBlog)
- 
 })
 
 module.exports = blogsRouter
