@@ -31,12 +31,13 @@ const Blog = ({ blog, addLike, removeBlog }) => {
     marginBottom: 5
   }
   const buttonLabel = ['view', 'hiden']
+  const data = [blog.title, blog.author]
 
   if (blog.likes === undefined) blog.likes = 0
   return (
-    <Togglable buttonLabel={buttonLabel} data={blog.title} ref={togglableRef}>
+    <Togglable buttonLabel={buttonLabel} data={data} ref={togglableRef}>
       <div style={blogStyle}>
-        <div>
+        <div className="blog-elements">
           {blog.title} <button onClick={handleClick}>hide</button>
           <br />
           {blog.url}
