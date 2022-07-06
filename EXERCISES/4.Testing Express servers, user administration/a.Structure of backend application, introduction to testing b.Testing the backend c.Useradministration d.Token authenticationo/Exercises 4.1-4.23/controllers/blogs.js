@@ -4,7 +4,6 @@ const Blog = require('../models/Blog')
 const User = require('../models/User')
 
 blogsRouter.get('/', async (req, res) => {
-  console.log(req)
   const blogs = await Blog.find({}).populate('user', { username: 1, name: 1 })
   res.json(blogs)
 })
@@ -36,6 +35,8 @@ blogsRouter.put('/:id', userExtractor, async (req, res) => {
   const { id } = req.params
   const blog = req.body
   const { userId } = req
+
+  console.log({ blog })
 
   if (!blog.title || !blog.author || !blog.url || !blog.likes)
     res.status(400).json({

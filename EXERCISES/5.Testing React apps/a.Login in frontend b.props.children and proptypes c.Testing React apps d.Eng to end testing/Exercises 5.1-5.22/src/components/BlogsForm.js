@@ -73,7 +73,7 @@ const BlogForm = ({ addBlog, setMessage }) => {
             }
           />
           <br />
-          <button>Create</button>
+          <button name="create-blog-button">Create</button>
         </form>
       </div>
     </Togglable>

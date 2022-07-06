@@ -15,8 +15,6 @@ const Togglable = forwardRef(({ children, buttonLabel, data }, ref) => {
     }
   })
 
-  console.log(data)
-
   if (buttonLabel.length === 2 && data !== undefined) {
     return (
       <div className="title-author">

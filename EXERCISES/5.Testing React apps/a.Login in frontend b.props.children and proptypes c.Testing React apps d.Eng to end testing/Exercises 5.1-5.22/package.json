@@ -6,6 +6,8 @@
     "@testing-library/user-event": "^14.1.1",
     "axios": "^0.27.2",
     "cross-env": "^7.0.3",
+    "eslint": "^8.19.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "prop-types": "^15.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -15,6 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "cypress:open": "cypress open",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -33,7 +36,18 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
+    "cypress": "^10.3.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "install": "^0.13.0",
     "npm": "^8.13.2"
+  },
+  "eslintConfig": {
+    "env": {
+      "cypress/globals": true
+    },
+    "extends": "react-app",
+    "plugins": [
+      "cypress"
+    ]
   }
 }
