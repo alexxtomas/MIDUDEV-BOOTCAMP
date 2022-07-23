@@ -1,0 +1,31 @@
+.error {
+    color: red;
+    background: lightgrey;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}  
+
+.succesfully {
+    color: green;
+    background: lightgrey;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}  
+
+.remove-blog {
+    background: #1D7AFF;
+    border-radius: 4px;
+    border-color:  #B8B8B8;
+    
+}
+
+.remove-blog:hover {
+    background: #4eadf6;
+
+}
