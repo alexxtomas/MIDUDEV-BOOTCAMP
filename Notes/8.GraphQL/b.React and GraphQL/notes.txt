@@ -1,0 +1,8 @@
+Usando server de GraphQl con Fetch -> https://github.com/alexxtomas/react-graphql/tree/35ea27d7ca74e18ecbeff81eff5140c1d9dcd0f2
+Instalando y Configurando Apollo Client en app React -> https://github.com/alexxtomas/react-graphql/tree/a930d9fae4af8de13bae3c0a58d8e28eadd81322
+Usando ApolloProvider y hook useQuery -> https://github.com/alexxtomas/react-graphql/tree/eda1545b5031189cea8b1a31ce49f54d9795c7dd
+Usando Parametros en las Queries y useLazyQuery -> https://github.com/alexxtomas/react-graphql/tree/5512fc8c0f67896cf91375c7d57136b2f4d61b06
+Usando Apollo Client Developer tools -> https://github.com/alexxtomas/react-graphql/tree/69144e7054ea5b7174cbee2e8577886bb1c524ee
+Mutaciones en el cliente y usando pollInterval -> https://github.com/alexxtomas/react-graphql/tree/e281ca9f5551f78e261ea4a74890cb9cd89cb8dc
+Refetch de la query despues de Mutacion y refactorizando app -> https://github.com/alexxtomas/react-graphql/tree/46d0f9c4961c85a51c47279be11275c843693430
+Sincronizacion de datos con Mutacion cuando se editan los datos -> https://github.com/alexxtomas/react-graphql/tree/58aa01d168009aff3cffbe9a5f64eec8eb95adaa

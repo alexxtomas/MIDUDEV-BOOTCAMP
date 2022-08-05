@@ -40,6 +40,7 @@ const typeDefs = gql`
     allBooks(author: String, genres: String): [Book]!
     allAuthors: [Author]!
     me: User
+    booksByGenre(genre: String!): [Book]!
   }
 
   type Mutation {
@@ -79,10 +80,18 @@ const resolvers = {
       }
       return allBooks
     },
-    allAuthors: () => Author.find({}),
+    allAuthors: async () => {
+      return await Author.find({})
+    },
     me: async (root, args, { currentUser }) => {
       if (!currentUser) throw new AuthenticationError('Not Authenticated')
       return currentUser
+    },
+    booksByGenre: async (root, args) => {
+      const { genre } = args
+      const books = await Book.find({}).populate('author')
+      const filtredBooks = books.filter((book) => book.genres.includes(genre))
+      return filtredBooks
     }
   },
   Author: {
@@ -115,21 +124,23 @@ const resolvers = {
     addBook: async (root, args, { currentUser }) => {
       if (!currentUser) throw new AuthenticationError('Not Authenticated')
       const { author: authorName } = args
-      const findingAuthor = await Author.findOne({ name: authorName })
-      const newBook = new Book({ ...args, author: findingAuthor })
-      console.log(findingAuthor)
+      let findingAuthor = await Author.findOne({ name: authorName })
       if (!findingAuthor) {
         const newAuthor = new Author({ name: authorName })
         await newAuthor.save()
+        findingAuthor = newAuthor
       }
+      const newBook = new Book({ ...args, author: findingAuthor })
+
       try {
         await newBook.save()
-        return newBook
       } catch (e) {
         throw new UserInputError(e.message, {
           invalidArgs: args
         })
       }
+
+      return newBook
     },
     editAuthor: async (root, args, { currentUser }) => {
       if (!currentUser) throw new AuthenticationError('Not Authenticated')

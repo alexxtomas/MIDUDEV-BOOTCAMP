@@ -1,0 +1,5 @@
+Parte 1 ¿Que es GraphQL? -> https://github.com/alexxtomas/graphql-server/tree/871b323f0146228a52f5095511f37c48a7a86725
+Parte 2 Cambiando datos en el servidor con Mutations -> https://github.com/alexxtomas/graphql-server/tree/d4d2cdf974823473909b06b1297cbe3cbf857edd
+Parte 3 Enum Types en GraphQl -> https://github.com/alexxtomas/graphql-server/tree/83b6a78f56a4aee8b05f9c4128c4705364b46bf2
+Parte 4 Mutation para editar datos en el servidor de GraphQL -> https://github.com/alexxtomas/graphql-server/tree/bd36bbbcd8749455945bb7ac89338d9da21f5f60
+Parte 5 Queries complejas y llamadas a RestApi -> https://github.com/alexxtomas/graphql-server/tree/9f6a2f8053d21939e3062d5d46d006a990bb3939

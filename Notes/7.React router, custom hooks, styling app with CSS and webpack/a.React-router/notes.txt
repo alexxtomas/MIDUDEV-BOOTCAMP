@@ -1,0 +1,5 @@
+Router without dependecies => https://github.com/alexxtomas/notes-app-mono-repo/tree/7111bb254aa08efa45b5624b371bec8d5a970ff7
+Router with react-router-dom => https://github.com/alexxtomas/notes-app-mono-repo/tree/89b1abb72fd2496b654bf2a9bee4ad5e45cef9cc
+Router with dynamically tracked routes -> https://github.com/alexxtomas/notes-app-mono-repo/tree/078ffb9fe7607363cf2684da871ff969a08e2f76
+Programmatic Navigation with react-router-dom -> https://github.com/alexxtomas/notes-app-mono-repo/tree/54659c6aeb1b108fee8ada4a34f39c403cba087b
+Redirect with Navigate component => https://github.com/alexxtomas/notes-app-mono-repo/tree/98b4cbaa72b4ce86996695c82753eeb5ac4023b1

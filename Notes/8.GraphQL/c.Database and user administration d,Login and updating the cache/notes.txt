@@ -1,0 +1,2 @@
+backend -> https://github.com/alexxtomas/graphql-server
+fronted -> https://github.com/alexxtomas/react-graphql

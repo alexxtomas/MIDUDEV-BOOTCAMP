@@ -36,8 +36,6 @@ blogsRouter.put('/:id', userExtractor, async (req, res) => {
   const blog = req.body
   const { userId } = req
 
-  console.log({ blog })
-
   if (!blog.title || !blog.author || !blog.url || !blog.likes)
     res.status(400).json({
       error: 'title, author, url or likes is requeried to modify blog'
@@ -60,7 +58,7 @@ blogsRouter.put('/:id', userExtractor, async (req, res) => {
 })
 
 blogsRouter.post('/', userExtractor, async (req, res) => {
-  const { url, title, author, likes } = req.body
+  const { url, title, author, likes, comments } = req.body
 
   const { userId } = req
   const user = await User.findById(userId)
@@ -70,7 +68,8 @@ blogsRouter.post('/', userExtractor, async (req, res) => {
     title,
     author,
     user: user._id,
-    likes
+    likes,
+    comments
   })
 
   const savedBlog = await blog.save()
@@ -79,6 +78,33 @@ blogsRouter.post('/', userExtractor, async (req, res) => {
   await user.save()
 
   res.status(201).json(savedBlog)
+})
+
+blogsRouter.get('/:id/comments', async (req, res) => {
+  const { id } = req.params
+  const { comments } = await Blog.findById(id)
+  res.status(200).json(comments)
+})
+
+blogsRouter.post('/:id/comments', userExtractor, async (req, res) => {
+  const { comment } = req.body
+  const { id } = req.params
+  console.log(id)
+
+  const blog = await Blog.findById(id)
+  const newBlogInfo = {
+    title: blog.title,
+    author: blog.author,
+    url: blog.url,
+    likes: blog.likes,
+    comments: [...blog.comments, comment]
+  }
+
+  const modifiedBlog = await Blog.findByIdAndUpdate(id, newBlogInfo, {
+    new: true
+  })
+
+  res.status(201).json(modifiedBlog)
 })
 
 module.exports = blogsRouter

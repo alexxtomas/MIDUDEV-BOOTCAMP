@@ -1,10 +1,11 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBpY2hhYnJhdmEiLCJpZCI6IjYyYmFmYWJiZTRjMDIyZjViZWViZjNjYSIsImlhdCI6MTY1NjQyMTA2MiwiZXhwIjoxNjU3MDI1ODYyfQ.ygOzff01c1Lrb3IQggdRn2oRx36lPZd1ilTjhoilv1I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBpY2hhYnJhdmEiLCJpZCI6IjYyZGJhYjdmZjg4OTVhNDAxNjk0OTZiYyIsImlhdCI6MTY1ODU2MzQ2MywiZXhwIjoxNjU5MTY4MjYzfQ.hhHkr1Ogkr-96jgX4qs1B_ePrUcm1Obur5mouH04chk
 
 {
     "title": "pichabrava's blog",
     "url": "https://helloworld.com",
     "author": "A",
-    "likes": 233
+    "likes": 233,
+    "comments": "hello world"
 }

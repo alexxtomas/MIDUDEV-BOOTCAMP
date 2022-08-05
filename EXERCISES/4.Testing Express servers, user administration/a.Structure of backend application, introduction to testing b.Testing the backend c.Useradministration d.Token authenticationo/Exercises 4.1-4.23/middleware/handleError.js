@@ -1,5 +1,5 @@
 module.exports = (err, req, res, next) => {
-  // console.error(err)
+  console.error(err)
   if (err.name === 'ValidationError')
     res.status(400).json({ error: 'Error in the post request validation' })
   else if (err.name === 'CastError')

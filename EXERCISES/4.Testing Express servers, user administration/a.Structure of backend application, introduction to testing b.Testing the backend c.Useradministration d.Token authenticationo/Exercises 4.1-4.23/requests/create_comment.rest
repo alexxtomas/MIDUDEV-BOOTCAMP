@@ -1,0 +1,7 @@
+POST http://localhost:3003/api/blogs/62bc9c229085c97716318bab/comments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBpY2hhYnJhdmEiLCJpZCI6IjYyYmFmYWJiZTRjMDIyZjViZWViZjNjYSIsImlhdCI6MTY1ODU2Mjc1MywiZXhwIjoxNjU5MTY3NTUzfQ.gw7nJR42DHrHayU-p2PgxjbkUFU178b3l6TaoL5IL64
+
+{
+    "comment": "I liked"
+}
