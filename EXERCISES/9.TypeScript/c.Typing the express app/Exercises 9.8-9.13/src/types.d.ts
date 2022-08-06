@@ -1,4 +1,4 @@
-
+import {Gender} from './enums';
 interface Diagnose {
     code: string,
     name: string,
@@ -8,9 +8,9 @@ interface Diagnose {
 export type Diagnoses = Array<Diagnose>;
 
 
-type Gender = 'male' | 'female' | 'other';
 
-interface Pateint{
+
+ interface Patient{
    id: string,
    name: string,
    dateOfBirth: string,
@@ -20,5 +20,7 @@ interface Pateint{
 }
 
 
- export type PateinsWithoutSensibilityData = Omit<Pateint, 'ssn'>;
+ export type PateinsWithoutSensibilityData = Omit<Patient, 'ssn'>;
+
+ export type NewPatient = Omit<Patient, 'id'>;
 
