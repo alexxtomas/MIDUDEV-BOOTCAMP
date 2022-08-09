@@ -1,4 +1,4 @@
-import {Gender} from './enums';
+import { Gender } from './enums';
 interface Diagnose {
     code: string,
     name: string,
@@ -7,20 +7,24 @@ interface Diagnose {
 
 export type Diagnoses = Array<Diagnose>;
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface Entry {
+
+}
 
 
-
- interface Patient{
+ interface Patient {
    id: string,
    name: string,
    dateOfBirth: string,
    ssn: string,
    gender: Gender,
-   occupation: string
+   occupation: string,
+   entries: Entry[]
 }
 
 
- export type PateinsWithoutSensibilityData = Omit<Patient, 'ssn'>;
+ export type PateinsWithoutSensibilityData = Omit<Patient, 'ssn' | 'entries'>;
 
  export type NewPatient = Omit<Patient, 'id'>;
 

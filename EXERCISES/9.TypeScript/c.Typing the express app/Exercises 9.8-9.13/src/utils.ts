@@ -1,5 +1,5 @@
-import {  NewPatient } from "./types";
 import { Gender } from "./enums";
+import { NewPatient } from "./types";
 
 const isString = (string: any): boolean => {
     return typeof string === 'string' || string instanceof String;
@@ -52,7 +52,8 @@ const toNewPatient = (obj: any): NewPatient => {
         // eslint-disable-next-line 
        gender: parseGender(obj.gender),
        ssn: parseSSN(obj.ssn),
-       occupation: parseOccupation(obj.occupation)
+       occupation: parseOccupation(obj.occupation),
+       entries: []
     };
 
     return newPatient;
